@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Storage;
+
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens, SoftDeletes;
@@ -20,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'active', 'activation_token'
+        'name', 'email', 'password', 'active', 'activation_token', 'avatar'
     ];
 
     /**
@@ -40,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ['avatar_url'];
+
+    public function getAvatarUrlAttribute()
+    {
+        return Storage::url('avatars/'.$this->id.'/'.$this->avatar);
+    }
 }
