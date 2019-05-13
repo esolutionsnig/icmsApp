@@ -15,6 +15,9 @@ class CreateBookBalancesTable extends Migration
     {
         Schema::create('book_balances', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('bb_client')->unsigned()->index();
+            $table->foreign('bb_client')->references('bank_id')->on('banks')->onDelete('cascade');
+            $table->integer('bb_balance');
             $table->timestamps();
         });
     }

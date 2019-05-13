@@ -14,7 +14,10 @@ class CreateConsignmentLocationsTable extends Migration
     public function up()
     {
         Schema::create('consignment_locations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('location_id');
+            $table->string('location_name');
+            $table->string('bankview');
+            $table->string('workstation');
             $table->timestamps();
         });
     }

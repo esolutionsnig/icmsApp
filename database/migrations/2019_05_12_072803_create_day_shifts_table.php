@@ -15,6 +15,15 @@ class CreateDayShiftsTable extends Migration
     {
         Schema::create('day_shifts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('dstart_title');
+            $table->string('dday');
+            $table->string('dshift');
+            $table->string('dstarted');
+            $table->string('dstarted_by');
+            $table->string('dclosed');
+            $table->string('dclosed_by');
+            $table->string('dclosed_on');
+            $table->string('dstatus');
             $table->timestamps();
         });
     }

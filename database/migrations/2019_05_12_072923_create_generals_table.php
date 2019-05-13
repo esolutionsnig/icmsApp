@@ -15,6 +15,19 @@ class CreateGeneralsTable extends Migration
     {
         Schema::create('generals', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('username');
+            $table->string('surname');
+            $table->string('sirstname');
+            $table->string('middlename');
+            $table->string('dob');
+            $table->string('gender');
+            $table->string('phoneNumber');
+            $table->string('address');
+            $table->string('state');
+            $table->string('country');
+            $table->string('occupation');
+            $table->string('profile');
+            $table->string('dp');
             $table->timestamps();
         });
     }

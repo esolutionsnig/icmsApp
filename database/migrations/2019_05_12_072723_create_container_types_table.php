@@ -14,7 +14,8 @@ class CreateContainerTypesTable extends Migration
     public function up()
     {
         Schema::create('container_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('ct_id');
+            $table->string('ct_name');
             $table->timestamps();
         });
     }

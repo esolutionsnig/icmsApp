@@ -14,7 +14,9 @@ class CreateDepositCategoriesTable extends Migration
     public function up()
     {
         Schema::create('deposit_categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('dc_id');
+            $table->string('dc_name');
+            $table->string('dc_slug');
             $table->timestamps();
         });
     }

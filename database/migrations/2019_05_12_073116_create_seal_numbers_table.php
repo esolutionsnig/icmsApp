@@ -14,7 +14,15 @@ class CreateSealNumbersTable extends Migration
     public function up()
     {
         Schema::create('seal_numbers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('seal_id');
+            $table->string('seal_number');
+            $table->integer('container_type_id');
+            $table->integer('deposit_type_id');
+            $table->integer('category_id');
+            $table->string('added_by');
+            $table->string('is_deleted');
+            $table->string('deleted_by');
+            $table->string('deleted_on');
             $table->timestamps();
         });
     }

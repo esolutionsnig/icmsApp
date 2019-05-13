@@ -14,7 +14,9 @@ class CreateDepositTypesTable extends Migration
     public function up()
     {
         Schema::create('deposit_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('dt_id');
+            $table->string('dt_name');
+            $table->string('dt_slug');
             $table->timestamps();
         });
     }

@@ -14,7 +14,17 @@ class CreateBundleConfirmationStartsTable extends Migration
     public function up()
     {
         Schema::create('bundle_confirmation_starts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('bcs_id');
+            $table->string('bc_title');
+            $table->integer('client_id')->unsigned()->index();
+            $table->foreign('client_id')->references('bank_id')->on('banks')->onDelete('cascade');
+            $table->string('strim');
+            $table->integer('conslocation');
+            $table->string('audit_trail_number');
+            $table->string('added_by');
+            $table->string('confirmation_done');
+            $table->string('ended_on');
+            $table->string('reference_number');
             $table->timestamps();
         });
     }

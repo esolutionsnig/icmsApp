@@ -14,7 +14,11 @@ class CreateBankRepsTable extends Migration
     public function up()
     {
         Schema::create('bank_reps', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('br_id');
+            $table->string('username');
+            $table->integer('branch_id')->unsigned()->index();
+            $table->foreign('branch_id')->references('branch_id')->on('bank_branches')->onDelete('cascade');
+            $table->string('added_by');
             $table->timestamps();
         });
     }

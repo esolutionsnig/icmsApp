@@ -14,7 +14,9 @@ class CreateDenominationsTable extends Migration
     public function up()
     {
         Schema::create('denominations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('denomination_id');
+            $table->string('denomination_name');
+            $table->string('denomination_slug');
             $table->timestamps();
         });
     }
