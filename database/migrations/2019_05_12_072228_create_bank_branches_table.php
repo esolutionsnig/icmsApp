@@ -14,9 +14,9 @@ class CreateBankBranchesTable extends Migration
     public function up()
     {
         Schema::create('bank_branches', function (Blueprint $table) {
-            $table->bigIncrements('branch_id');
-            $table->integer('bank_id')->unsigned()->index();
-            $table->foreign('bank_id')->references('bank_id')->on('banks')->onDelete('cascade');
+            $table->bigIncrements('id');
+            $table->integer('banks_id')->unsigned()->index();
+            $table->foreign('banks_id')->references('id')->on('banks')->onDelete('cascade');
             $table->string('branch_location');
             $table->string('branch_location_code');
             $table->string('branch_cmu');

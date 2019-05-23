@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Model\Banks;
 use Illuminate\Http\Request;
+use App\Http\Requests\BanksRequest;
+use App\Http\Resources\Bank\BankResource;
+use App\Http\Resources\Bank\BankCollection;
+use Symfony\Component\HttpFoundation\Response;
 
 class BanksController extends Controller
 {
+    /**
+     * Add middleware to prevent unauthorzed user from make changes to db record
+     * This middleware will be excluded for get requests i.e index and show URI
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +27,7 @@ class BanksController extends Controller
      */
     public function index()
     {
-        //
+        return BankCollection::collection(Banks::paginate(5));
     }
 
     /**
@@ -33,9 +46,16 @@ class BanksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BanksRequest $request)
     {
-        //
+        $bank = new Banks;
+        $bank->bank_name = $request->bank_name;
+        $bank->bank_code = $request->code;
+        $bank->added_by = $request->addedBy;
+        $bank->save();
+        return response([
+            'data' => new BankResource($bank)
+        ],Response::HTTP_CREATED);
     }
 
     /**
@@ -44,9 +64,9 @@ class BanksController extends Controller
      * @param  \App\Model\Banks  $banks
      * @return \Illuminate\Http\Response
      */
-    public function show(Banks $banks)
+    public function show(Banks $bank)
     {
-        //
+        return new BankResource($bank);
     }
 
     /**
@@ -55,7 +75,7 @@ class BanksController extends Controller
      * @param  \App\Model\Banks  $banks
      * @return \Illuminate\Http\Response
      */
-    public function edit(Banks $banks)
+    public function edit(Banks $bank)
     {
         //
     }
@@ -67,9 +87,12 @@ class BanksController extends Controller
      * @param  \App\Model\Banks  $banks
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Banks $banks)
+    public function update(Request $request, Banks $bank)
     {
-        //
+        $bank->update($request->all());
+        return response([
+            'data' => new BankResource($bank)
+        ],Response::HTTP_CREATED);
     }
 
     /**
@@ -78,8 +101,9 @@ class BanksController extends Controller
      * @param  \App\Model\Banks  $banks
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Banks $banks)
+    public function destroy(Banks $bank)
     {
-        //
+        $bank->delete();
+        return response(null,Response::HTTP_NO_CONTENT);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Banks;
 use App\Model\BankBranch;
 use Illuminate\Http\Request;
+use App\Http\Resources\BranchResource;
 
 class BankBranchController extends Controller
 {
@@ -12,9 +14,9 @@ class BankBranchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Banks $bank)
     {
-        //
+        return BranchResource::collection($bank->branches);
     }
 
     /**

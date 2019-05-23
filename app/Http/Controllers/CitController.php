@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Cit;
+use App\Model\Evacuation;
 use Illuminate\Http\Request;
+use App\Http\Resources\CitResource;
 
 class CitController extends Controller
 {
@@ -12,9 +14,9 @@ class CitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Evacuation $evacuation)
     {
-        //
+        return CitResource::collection($evacuation->cits);
     }
 
     /**

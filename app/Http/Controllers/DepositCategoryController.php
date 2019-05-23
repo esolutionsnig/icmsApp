@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\DepositCategory;
 use Illuminate\Http\Request;
+use App\Model\Depositcategory;
+use App\Http\Resources\Depositcategory\DepositcategoryResource;
+use App\Http\Resources\Depositcategory\DepositcategoryCollection;
 
-class DepositCategoryController extends Controller
+class DepositcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class DepositCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return DepositcategoryCollection::collection(Depositcategory::paginate(10));
     }
 
     /**
@@ -41,21 +43,21 @@ class DepositCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\DepositCategory  $depositCategory
+     * @param  \App\Model\Depositcategory  $depositcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(DepositCategory $depositCategory)
+    public function show(Depositcategory $depositcategory)
     {
-        //
+        return new DepositcategoryResource($depositcategory);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\DepositCategory  $depositCategory
+     * @param  \App\Model\Depositcategory  $depositcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(DepositCategory $depositCategory)
+    public function edit(Depositcategory $depositcategory)
     {
         //
     }
@@ -64,10 +66,10 @@ class DepositCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\DepositCategory  $depositCategory
+     * @param  \App\Model\Depositcategory  $depositcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DepositCategory $depositCategory)
+    public function update(Request $request, Depositcategory $depositcategory)
     {
         //
     }
@@ -75,10 +77,10 @@ class DepositCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\DepositCategory  $depositCategory
+     * @param  \App\Model\Depositcategory  $depositcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DepositCategory $depositCategory)
+    public function destroy(Depositcategory $depositcategory)
     {
         //
     }

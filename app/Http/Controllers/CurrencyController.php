@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Model\Currency;
+use Illuminate\Http\Request;
+use App\Http\Resources\Currency\CurrencyResource;
+use App\Http\Resources\Currency\CurrencyCollection;
+
+class CurrencyController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return CurrencyCollection::collection(Currency::paginate(10));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Model\Currency  $currency
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Currency $currency)
+    {
+        return new CurrencyResource($currency);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Model\Currency  $currency
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Currency $currency)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Model\Currency  $currency
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Currency $currency)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Model\Currency  $currency
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Currency $currency)
+    {
+        //
+    }
+}

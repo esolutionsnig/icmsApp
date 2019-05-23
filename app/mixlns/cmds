@@ -1,0 +1,5 @@
+// Migrate Only one table
+php artisan migrate --path=/database/migrations/2019_05_17_053520_create_evacuations_table.php
+
+// Make Seeder
+php artisan make:seeder EvacuationpreparationsTableSeeder

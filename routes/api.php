@@ -32,77 +32,68 @@ Route::group([
 Route::apiResource('/banks','BanksController');
 Route::group(['prefix'=>'banks'],function(){
     Route::apiResource('/{bank}/branches','BankBranchController');
-    Route::apiResource('/{bank}/reps','BankRepsController');
-    Route::apiResource('/{bank}/balance','BookBalanceController');
+    Route::apiResource('/{bank}/ballances','BookBallanceController');
+    Route::apiResource('/{bank}/reps','BankrepController');
 });
 
 // Evacuation Request
-Route::apiResource('/bankrequests','BankRequestsController');
-Route::group(['prefix' => 'bankrequests'], function () {
-    Route::apiResource('/{bankrequest}/cashpreparations','CashPreparationsController');
-    Route::apiResource('/{bankrequest}/cit','CitController');
+Route::apiResource('/evacuations','EvacuationController');
+Route::group(['prefix' => 'evacuations'], function () {
+    Route::apiResource('/{evacuation}/evacuationpreparations','EvacuationpreparationController');
+    Route::apiResource('/{evacuation}/cits','CitController');
 });
 
 // Bundle Confirmations
-Route::apiResource('/bundleconfirmations','BundleConfirmationStartController');
-Route::group(['prefix'=>'bundleconfirmations'],function(){
-    Route::apiResource('/{bundleconfirmation}/bundleconfirmations','BundleConfirmationsController');
-    Route::apiResource('/{bundleconfirmation}/thrownexceptions','ThrownExceptionsController');
+Route::apiResource('/bundleconfirmations','BundleconfirmationController');
+Route::group(['prefix' => 'bundleconfirmations'], function () {
+    Route::apiResource('/{bundleconfirmation}/bundleconfirmationbags','BundleconfirmationbagController');
+    Route::apiResource('/{bundleconfirmation}/thrownexceptions','ThrownexceptionController');
+});
+
+// Supply Requests
+Route::apiResource('/supplies','SupplyController');
+Route::group(['prefix' => 'supplies'], function () {
+    Route::apiResource('/{supply}/supplybranches','SupplybranchController');
 });
 
 // Cash Allocations
-Route::apiResource('/cashallocations','CashAllocationsController');
+Route::apiResource('/cashallocations','CashallocationController');
 
 // Consignment Locations
-Route::apiResource('/consignmentlocations','ConsignmentLocationsController');
+Route::apiResource('/consignmentlocations','ConsignmentlocationController');
 
 // Container Types
-Route::apiResource('/containertypes','ContainerTypesController');
+Route::apiResource('/containertypes','ContainertypeController');
 
 // Currencies
-Route::apiResource('/currencies','CurrenciesController');
+Route::apiResource('/currencies','CurrencyController');
 
 // Day Shift
-Route::apiResource('/dayshift','DayShiftController');
+Route::apiResource('/dayshifts','DayshiftController');
 
-// Denominations
-Route::apiResource('/denominations','DenominationsController');
+// Denomination
+Route::apiResource('/denominations','DenominationController');
 
-// Deposit Types
-Route::apiResource('/deposittypes','DepositTypesController');
+// Deposit Category
+Route::apiResource('/depositcategories','DepositcategoryController');
 
-// Deposit Categories
-Route::apiResource('/depositcategories','DepositCategoryController');
+// Deposit Type
+Route::apiResource('/deposittypes','DeposittypeController');
 
-// General
-Route::apiResource('/general','GeneralController');
+// Generals
+Route::apiResource('/generals','GeneralController');
 
 // Internal Movements
-Route::apiResource('/internalmovements','InternalMovementsController');
-
-// Message
-Route::apiResource('/message','MessageController');
+Route::apiResource('/internalmovements','InternalmovementController');
 
 // Notifications
-Route::apiResource('/notifications','NotificationsController');
+Route::apiResource('/notifications','NotificationController');
 
-// Sealings
-Route::apiResource('/sealings','SealingsController');
-
-// Seal Numbers
-Route::apiResource('/sealnumbers','SealNumbersController');
+// Sealing
+Route::apiResource('/sealings','SealingController');
 
 // Shifts Day
-Route::apiResource('/shiftsday','ShiftsDayController');
-
-// SupplyRequests
-Route::apiResource('/supplyrequests','SupplyRequestsController');
-Route::group(['prefix'=>'supplyrequests'],function(){
-    Route::apiResource('/{supplyrequest}/supplyrequestsbranch','SupplyRequestsBranchController');
-});
-
-// Vaults
-Route::apiResource('/vaults','VaultController');
+Route::apiResource('/shiftsdays','ShiftsdayController');
 
 // Vehicles
-Route::apiResource('/vehicles','VehiclesController');
+Route::apiResource('/vehicles','VehicleController');

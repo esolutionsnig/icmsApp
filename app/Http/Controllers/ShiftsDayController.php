@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\ShiftsDay;
+use App\Model\Shiftsday;
 use Illuminate\Http\Request;
+use App\Http\Resources\Shiftsday\ShiftsdayResource;
+use App\Http\Resources\Shiftsday\ShiftsdayCollection;
 
-class ShiftsDayController extends Controller
+class ShiftsdayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class ShiftsDayController extends Controller
      */
     public function index()
     {
-        //
+        return ShiftsdayCollection::collection(Shiftsday::paginate(10));
     }
 
     /**
@@ -41,21 +43,21 @@ class ShiftsDayController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\ShiftsDay  $shiftsDay
+     * @param  \App\Model\Shiftsday  $shiftsday
      * @return \Illuminate\Http\Response
      */
-    public function show(ShiftsDay $shiftsDay)
+    public function show(Shiftsday $shiftsday)
     {
-        //
+        return new ShiftsdayResource($shiftsday);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\ShiftsDay  $shiftsDay
+     * @param  \App\Model\Shiftsday  $shiftsday
      * @return \Illuminate\Http\Response
      */
-    public function edit(ShiftsDay $shiftsDay)
+    public function edit(Shiftsday $shiftsday)
     {
         //
     }
@@ -64,10 +66,10 @@ class ShiftsDayController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\ShiftsDay  $shiftsDay
+     * @param  \App\Model\Shiftsday  $shiftsday
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShiftsDay $shiftsDay)
+    public function update(Request $request, Shiftsday $shiftsday)
     {
         //
     }
@@ -75,10 +77,10 @@ class ShiftsDayController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\ShiftsDay  $shiftsDay
+     * @param  \App\Model\Shiftsday  $shiftsday
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ShiftsDay $shiftsDay)
+    public function destroy(Shiftsday $shiftsday)
     {
         //
     }

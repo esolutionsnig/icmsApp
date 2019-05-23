@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\DayShift;
+use App\Model\Dayshift;
 use Illuminate\Http\Request;
+use App\Http\Resources\Dayshift\DayshiftResource;
+use App\Http\Resources\Dayshift\DayshiftCollection;
 
-class DayShiftController extends Controller
+class DayshiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class DayShiftController extends Controller
      */
     public function index()
     {
-        //
+        return DayshiftCollection::collection(Dayshift::paginate(10));
     }
 
     /**
@@ -41,21 +43,21 @@ class DayShiftController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\DayShift  $dayShift
+     * @param  \App\Model\Dayshift  $dayshift
      * @return \Illuminate\Http\Response
      */
-    public function show(DayShift $dayShift)
+    public function show(Dayshift $dayshift)
     {
-        //
+        return new DayshiftResource($dayshift);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\DayShift  $dayShift
+     * @param  \App\Model\Dayshift  $dayshift
      * @return \Illuminate\Http\Response
      */
-    public function edit(DayShift $dayShift)
+    public function edit(Dayshift $dayshift)
     {
         //
     }
@@ -64,10 +66,10 @@ class DayShiftController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\DayShift  $dayShift
+     * @param  \App\Model\Dayshift  $dayshift
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DayShift $dayShift)
+    public function update(Request $request, Dayshift $dayshift)
     {
         //
     }
@@ -75,10 +77,10 @@ class DayShiftController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\DayShift  $dayShift
+     * @param  \App\Model\Dayshift  $dayshift
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DayShift $dayShift)
+    public function destroy(Dayshift $dayshift)
     {
         //
     }

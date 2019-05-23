@@ -15,19 +15,19 @@ class CreateGeneralsTable extends Migration
     {
         Schema::create('generals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
-            $table->string('surname');
-            $table->string('sirstname');
-            $table->string('middlename');
-            $table->string('dob');
-            $table->string('gender');
-            $table->string('phoneNumber');
-            $table->string('address');
-            $table->string('state');
-            $table->string('country');
-            $table->string('occupation');
-            $table->string('profile');
-            $table->string('dp');
+            $table->string('username')->nullable();
+            $table->string('surname')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('middlename')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('phoneNumber')->nullable();
+            $table->string('address')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('profile')->nullable();
+            $table->string('dp')->nullable();
             $table->timestamps();
         });
     }

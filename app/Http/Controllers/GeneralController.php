@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\General;
 use Illuminate\Http\Request;
+use App\Http\Resources\General\GeneralResource;
+use App\Http\Resources\General\GeneralCollection;
 
 class GeneralController extends Controller
 {
@@ -14,7 +16,7 @@ class GeneralController extends Controller
      */
     public function index()
     {
-        //
+        return GeneralCollection::collection(General::paginate(10));
     }
 
     /**
@@ -46,7 +48,7 @@ class GeneralController extends Controller
      */
     public function show(General $general)
     {
-        //
+        return new GeneralResource($general);
     }
 
     /**
